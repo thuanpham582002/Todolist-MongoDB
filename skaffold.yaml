@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+metadata:
+  name: todolist-mongodb
+build:
+  artifacts:
+    - image: client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+    - image: server
+      context: server
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+      - k8s/*.yaml
