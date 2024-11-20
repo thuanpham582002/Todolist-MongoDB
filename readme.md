@@ -190,3 +190,25 @@ Consider integrating monitoring tools like Prometheus and Grafana to monitor the
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+
+# Add ELK stack
+helm repo add elastic https://helm.elastic.co
+helm repo update
+
+# Create namespace
+kubectl create namespace elk
+
+# Install Elasticsearch
+helm install elasticsearch elastic/elasticsearch \
+  --namespace elk \
+  -f k8s/elasticsearch-values.yaml
+
+# Install Kibana
+helm install kibana elastic/kibana \
+  --namespace elk \
+  -f k8s/kibana-values.yaml
+
+# Install Logstash
+helm install logstash elastic/logstash \
+  --namespace elk \
+  -f k8s/logstash-values.yaml
