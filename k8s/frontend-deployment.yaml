@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client
+  name: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: client
+      app: frontend
   template:
     metadata:
       labels:
-        app: client
+        app: frontend
     spec:
       containers:
-      - name: client
+      - name: frontend
         image: client
         ports:
         - containerPort: 80
@@ -28,7 +28,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: client
+  name: frontend
 spec:
   type: NodePort
   ports:
@@ -36,4 +36,4 @@ spec:
     targetPort: 80
     nodePort: 30080
   selector:
-    app: client
+    app: frontend

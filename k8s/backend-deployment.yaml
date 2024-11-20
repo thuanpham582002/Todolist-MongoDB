@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: server
+  name: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: server
+      app: backend
   template:
     metadata:
       labels:
-        app: server
+        app: backend
     spec:
       containers:
-      - name: server
+      - name: backend
         image: server
         ports:
         - containerPort: 3000
@@ -28,7 +28,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: server
+  name: backend
 spec:
   type: NodePort
   ports:
@@ -36,16 +36,16 @@ spec:
     targetPort: 3000
     nodePort: 30000
   selector:
-    app: server 
+    app: backend 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: server-headless
+  name: backend-headless
 spec:
   clusterIP: None
   ports:
   - port: 3000
     targetPort: 3000
   selector:
-    app: server
+    app: backend
