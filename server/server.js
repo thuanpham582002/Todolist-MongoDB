@@ -48,7 +48,10 @@ mongoose.connect(MONGODB_URI, {
   w: 'majority'
 })
 .then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('MongoDB connection error:', err));
+.catch(err => {
+  console.error('MongoDB connection error:', err);
+  process.exit(1); // Crash the application if MongoDB connection fails
+});
 
 // Todo Model
 const todoSchema = new mongoose.Schema({
