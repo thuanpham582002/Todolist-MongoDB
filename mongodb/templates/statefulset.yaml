@@ -102,7 +102,7 @@ spec:
             - mountPath: /replicaset
               name: keyfile
             {{- end }}
-            {{- if .Values.replicaSet.keySecretName }}
+            {{- if and .Values.replicaSet.enabled .Values.replicaSet.keySecretName }}
             - mountPath: /keyfile-secret
               name: keyfile-secret
             {{- end }}

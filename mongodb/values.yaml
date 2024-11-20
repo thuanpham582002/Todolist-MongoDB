@@ -146,7 +146,7 @@ useDeploymentWhenNonHA: false
 ## Parameters to build a MongoDB replica set (HA mode)
 replicaSet:
   ## Enables replica set deployment mode
-  enabled: true
+  enabled: false
   ## Replica set name
   name: "repl"
   ## Key for internal replica set authentication (base64 encoded string 6-1024 chars.)
