@@ -1,1 +1,6 @@
 server/node_modules/*
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/Todolist-MongoDB.iml
+.idea/vcs.xml

@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2beta12
+apiVersion: skaffold/v4beta11
 kind: Config
 metadata:
   name: todolist-mongodb
@@ -12,7 +12,28 @@ build:
       context: server
       docker:
         dockerfile: Dockerfile
-deploy:
-  kubectl:
-    manifests:
-      - k8s/*.yaml
+manifests:
+  rawYaml:
+    - k8s/*.yaml
+  helm:
+    releases:
+      - name: mongodb
+        chartPath: mongodb
+        
+      - name: elasticsearch
+        chartPath: elk/elasticsearch
+        
+      - name: logstash
+        chartPath: elk/logstash
+        
+      - name: kibana
+        chartPath: elk/kibana
+
+      - name: filebeat
+        chartPath: elk/filebeat
+
+      - name: prometheus
+        chartPath: prometheus/prometheus
+
+      - name: grafana
+        chartPath: grafana/grafana
