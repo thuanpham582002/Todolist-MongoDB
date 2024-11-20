@@ -435,6 +435,7 @@ data:
     if [ -f /keyfile-secret/keyfile ]; then
       echo "Using keyfile from secret"
       cp /keyfile-secret/keyfile /replicaset/keyfile
+      chmod 400 /replicaset/keyfile
     else
       echo "Using configured key"
       echo "{{ .Values.replicaSet.key }}" > /replicaset/keyfile

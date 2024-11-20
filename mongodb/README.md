@@ -2,6 +2,18 @@
 
 ![Version: 0.6.9](https://img.shields.io/badge/Version-0.6.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.0.15](https://img.shields.io/badge/AppVersion-7.0.15-informational?style=flat-square)
 
+# Generate keyfile
+To generate a keyfile for MongoDB, you can use the following command:
+``` bash
+openssl rand -base64 756 > mongodb-keyfile
+```
+
+then apply it in to k8s secret:
+``` bash
+kubectl create secret generic mongodb-keyfile-secret --from-file=keyfile=mongodb-keyfile
+```
+
+
 ## Changelog
 
 see [RELEASENOTES.md](RELEASENOTES.md)
