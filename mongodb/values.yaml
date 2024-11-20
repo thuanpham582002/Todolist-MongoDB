@@ -146,7 +146,7 @@ useDeploymentWhenNonHA: false
 ## Parameters to build a MongoDB replica set (HA mode)
 replicaSet:
   ## Enables replica set deployment mode
-  enabled: false
+  enabled: true
   ## Replica set name
   name: "repl"
   ## Key for internal replica set authentication (base64 encoded string 6-1024 chars.)
@@ -234,20 +234,20 @@ env: []
 
 settings:
   ## The root username
-  rootUsername:
+  rootUsername: admin
   ## The root user password
-  rootPassword:
+  rootPassword: admin
 
 ## Optional user database which is created during first startup with user and password
-userDatabase: {}
+userDatabase:
   ## Name of the user database
-  # name:
+  name: todolist
 
   ## Database user with full access rights
-  # user:
+  user: appuser
 
   ## Password of the database user
-  # password:
+  password: userpass123
 
 ## Custom configuration that will be created as file in /etc/mongo/custom.conf (use instead of command args)
 ## For more flexible options see extraSecretConfigs: section

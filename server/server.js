@@ -38,7 +38,7 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB connection
-const MONGODB_URI = 'mongodb://mongodb.default.svc.cluster.local:27017/todolist';
+const MONGODB_URI = 'mongodb://appuser:userpass123@mongodb-0.mongodb-internal.default.svc.cluster.local:27017,mongodb-1.mongodb-internal.default.svc.cluster.local:27017,mongodb-2.mongodb-internal.default.svc.cluster.local:27017/todolist?replicaSet=repl&authSource=todolist';
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,

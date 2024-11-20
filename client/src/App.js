@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 // Get the API URL from environment variable or use a default
-const API_URL = process.env.REACT_APP_API_URL || 'http://server.default.svc.cluster.local:3000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://192.168.106.3:30000';
 
 function App() {
   const [todos, setTodos] = useState([]);

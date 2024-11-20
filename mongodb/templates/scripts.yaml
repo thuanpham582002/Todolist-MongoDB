@@ -373,7 +373,16 @@ data:
       else
         log "Symbolic link for mongoshell already exists"
       fi
-      export MONGOSHELL="/extrainitscripts/mongoshell --quiet --username $MONGO_INITDB_ROOT_USERNAME --password $MONGO_INITDB_ROOT_PASSWORD"
+
+      # Check if authentication environment variables are set
+      if [ -n "$MONGO_INITDB_ROOT_USERNAME" ] && [ -n "$MONGO_INITDB_ROOT_PASSWORD" ]; then
+        export MONGOSHELL="/extrainitscripts/mongoshell --quiet --username $MONGO_INITDB_ROOT_USERNAME --password $MONGO_INITDB_ROOT_PASSWORD"
+        log "Creating admin user"
+        $MONGOSHELL --eval "db.getSiblingDB('admin').createUser({user: '$MONGO_INITDB_ROOT_USERNAME', pwd: '$MONGO_INITDB_ROOT_PASSWORD', roles: ['root']})"
+      else
+        log "No authentication environment variables set, skipping authentication"
+        export MONGOSHELL="/extrainitscripts/mongoshell --quiet"
+      fi
     }
 
     main() {
