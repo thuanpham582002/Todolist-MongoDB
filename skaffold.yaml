@@ -32,8 +32,11 @@ manifests:
       - name: filebeat
         chartPath: elk/filebeat
 
-      - name: prometheus
-        chartPath: prometheus/prometheus
+      # - name: grafana
+      #   chartPath: grafana/grafana
 
-      - name: grafana
-        chartPath: grafana/grafana
+      # - name: prometheus
+      #   chartPath: prometheus/prometheus
+
+      # - name: prometheus-mongodb-exporter
+      #   chartPath: prometheus/prometheus-mongodb-exporter
