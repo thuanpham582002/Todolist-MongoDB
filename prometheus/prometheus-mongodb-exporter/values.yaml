@@ -133,3 +133,6 @@ volumes: []
 
 # Volumes that will be mounted into the exporter pod
 volumeMounts: []
+
+test:
+  enabled: false
